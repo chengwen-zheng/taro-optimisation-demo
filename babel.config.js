@@ -12,6 +12,6 @@ module.exports = {
   ],
    // 添加我们的自定义插件
   plugins: [
-    path.resolve(__dirname, './config/babel-plugin-transform-async-import.js')
+    // path.resolve(__dirname, './config/babel-plugin-transform-async-import.js')
   ]
 }

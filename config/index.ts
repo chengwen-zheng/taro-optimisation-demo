@@ -47,6 +47,8 @@ const config = {
       }
     },
     webpackChain(chain, webpack) {
+      chain.resolve.alias
+      .set('pages/base/index', path.resolve(__dirname, '../src/pages/base/index'))
       chain.merge({
         optimization: {
           splitChunks: {
@@ -60,6 +62,18 @@ const config = {
           },
         },
       });
+
+
+      chain.module
+      .rule('script')
+      .use('taro-dynamic-import-loader')
+      .loader(path.resolve(__dirname, './taro-dynamic-import-loader.js'))
+      .end()
+      // .use('taro-dynamic-import-post-loader')
+      // .loader(path.resolve(__dirname, './taro-dynamic-import-post-loader.js'))
+      // .end();
+
+      console.log(path.resolve(__dirname, '../src/pages/base/index'), '====>')
     },
     addChunkPages (pages) {
       console.log('<========================================pages=======================================>', pages);
