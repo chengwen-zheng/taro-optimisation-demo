@@ -1,3 +1,4 @@
+import "./utils/webpack_load.js";
 import { Component, PropsWithChildren } from 'react'
 import { Provider } from 'react-redux'
 
