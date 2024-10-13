@@ -48,7 +48,7 @@ const config = {
     },
     webpackChain(chain, webpack) {
       chain.resolve.alias
-      .set('pages/base/index', path.resolve(__dirname, '../src/pages/base/index'))
+      .set('pages/base/index', path.join(__dirname, '../src/pages/base/index'))
       chain.merge({
         optimization: {
           splitChunks: {
@@ -58,17 +58,17 @@ const config = {
                 test: /pages\/base\/index/,
                 priority: 50,
               },
-            },          
+            },
           },
         },
       });
 
 
-      chain.module
-      .rule('script')
-      .use('taro-dynamic-import-loader')
-      .loader(path.resolve(__dirname, './taro-dynamic-import-loader.js'))
-      .end()
+      // chain.module
+      // .rule('script')
+      // .use('taro-dynamic-import-loader')
+      // .loader(path.resolve(__dirname, './taro-dynamic-import-loader.js'))
+      // .end()
       // .use('taro-dynamic-import-post-loader')
       // .loader(path.resolve(__dirname, './taro-dynamic-import-post-loader.js'))
       // .end();
@@ -77,7 +77,7 @@ const config = {
     },
     addChunkPages (pages) {
       console.log('<========================================pages=======================================>', pages);
-      pages.set('pages/index/index', [base]);
+      pages.set('pages/index/index', []);
       // pages.set('pages/index/index', [commonMapSE]);
       // pages.set('pages/index/index', [commonMapSE]);
     }
